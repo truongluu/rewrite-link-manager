@@ -1,0 +1,124 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPML Remove Taxonomy, Post type For Translation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Wed Jan 06 2016 10:56:47 GMT+0700 (SE Asia Standard Time)\n"
+"PO-Revision-Date: Sat Jan 16 2016 11:43:50 GMT+0700 (ICT)\n"
+"Last-Translator: admin <ad.dev1@3forcom.com>\n"
+"Language-Team: \n"
+"Language: Vietnamese\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Loco-Target-Locale: vi_VN"
+
+#. Name of the plugin
+msgid "Taxonomy, post type remove slug for translation"
+msgstr ""
+
+#. Description of the plugin
+msgid "Fix taxonomy, post type link for translation"
+msgstr ""
+
+#. URI of the plugin
+msgid "http://www.3forcom.com"
+msgstr ""
+
+#. Author of the plugin
+msgid "truong.luu"
+msgstr ""
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:265 ../inc/wp-taxonomy-
+#: posttype-remove-slug.class.php:307
+msgid "Save taxonomy remove slug successfull"
+msgstr ""
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:294
+msgid "Save link extension successfull"
+msgstr ""
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:315
+msgid "Save post type remove slug successfull"
+msgstr ""
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:503
+msgid "Taxonomy slug"
+msgstr ""
+
+#: ../menu/management.php:116
+msgid "Enable"
+msgstr "Bật"
+
+#: ../menu/management.php:120
+msgid "(Not start with dot, ex: html, htm)"
+msgstr "(Không bắt đầu với dấu chấm, ví dụ: html, htm)"
+
+#: ../menu/management.php:124
+msgid "Page"
+msgstr "Trang"
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:43
+msgid "Configure"
+msgstr "Thiết lập (cấu hình)"
+
+#: ../inc/wp-taxonomy-posttype-remove-slug.class.php:504
+msgid "Taxonomy, post type remove slug"
+msgstr "Rút gọn đường dẫn term, posttype"
+
+#: ../menu/management.php:19
+msgid "Setup Taxonomy remove slug"
+msgstr "Thiết lập xóa taxonomy, term trong term link"
+
+#: ../menu/management.php:21 ../menu/management.php:72
+msgid "Options"
+msgstr "Lựa chọn"
+
+#: ../menu/management.php:23
+msgid "Prevent duplicate slug (Extend id to end link)"
+msgstr "Ngăn chặn trùng slug (Thêm id ở cuối link)"
+
+#: ../menu/management.php:24
+msgid "Taxonomy list"
+msgstr "Danh sách phân loại"
+
+#: ../menu/management.php:36
+msgid "Save taxonomy"
+msgstr "Lưu phân loại"
+
+#: ../menu/management.php:43
+msgid "Rewrite url manual"
+msgstr "Viết lại đường dẫn bằng tay"
+
+#: ../menu/management.php:51
+msgid "Save rewrite url"
+msgstr "Lưu"
+
+#: ../menu/management.php:71
+msgid "Setup Post type remove slug"
+msgstr "Thiết lập xóa posttype trên đường dẫn của post type"
+
+#: ../menu/management.php:84
+msgid "Save post type"
+msgstr "Lưu"
+
+#: ../menu/management.php:94
+msgid "Setup link extension"
+msgstr "Thiết lập đường dẫn mở rộng"
+
+#: ../menu/management.php:95 ../menu/management.php:119
+msgid "Link extension"
+msgstr "Đường dẫn mở rộng"
+
+#: ../menu/management.php:143
+msgid "Save link extension"
+msgstr "Lưu"
