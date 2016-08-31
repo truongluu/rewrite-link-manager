@@ -23,7 +23,7 @@ if( !empty( $ts_settings['prevent_duplicate']) ) {
     <h3><?php _e('Options', 'rewrite-link-manager')?></h3>
         <label><input type="checkbox" name="prevent_duplicate" value="1"
                       <?php if( $prevent_duplicate == 1 ):?>checked="checked"<?php endif;?>/><?php _e( 'Prevent duplicate slug (Extend id to end link)', 'rewrite-link-manager' );?></label>
-    <h3><?php _e( 'Taxonomy list', 'rewrite-link-manager' )?></h3>
+    <h3><?php _e( 'Choose taxonomy to remove from term link', 'rewrite-link-manager' )?></h3>
 
     <?php wp_nonce_field( 'icl_taxonomy_slug_save' ); ?>
     <ul>
@@ -40,7 +40,7 @@ if( !empty( $ts_settings['prevent_duplicate']) ) {
     </p>    
     </form>
     <p>
-        <img id="alp_ajx_ldr_1" src="<?php echo REWRITE_LINK_MANAGER_PATH ?>/res/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
+        <img id="alp_ajx_ldr_1" src="<?php echo REWRITE_LINK_MANAGER_PATH ?>/assets/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
     </p>
     <p>
     <?php
@@ -50,7 +50,7 @@ if( !empty( $ts_settings['prevent_duplicate']) ) {
     ?>
     </p>
     <p>
-        <img id="alp_ajx_ldr_2" src="<?php echo REWRITE_LINK_MANAGER_PATH; ?>/res/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
+        <img id="alp_ajx_ldr_2" src="<?php echo REWRITE_LINK_MANAGER_PATH; ?>/assets/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
     </p>
 
 </div>
@@ -65,7 +65,7 @@ if( !empty( $ts_settings['posttype_remove'] )) {
 ?>
 <div class="wrap">
     <div id="icon-wpml" class="icon32"><br /></div>
-    <h2><?php echo __('Setup Post type remove slug', 'rewrite-link-manager') ?></h2>
+    <h2><?php echo __('Choose Post type to remove from single link', 'rewrite-link-manager') ?></h2>
     <h3><?php _e('Options', 'rewrite-link-manager')?></h3>
     <form name="icl_save_taxonomy_options" id="icl_save_posttype_options" action="" method="post">
         <?php wp_nonce_field('icl_taxonomy_slug_save'); ?>
@@ -83,13 +83,13 @@ if( !empty( $ts_settings['posttype_remove'] )) {
         </p>
     </form>
     <p>
-        <img id="alp_ajx_ldr_pt" src="<?php echo REWRITE_LINK_MANAGER_PATH; ?>/res/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
+        <img id="alp_ajx_ldr_pt" src="<?php echo REWRITE_LINK_MANAGER_PATH; ?>/assets/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
     </p>
 </div>
 <div class="wrap">
 <div id="icon-wpml" class="icon32"><br /></div>
-<h2><?php echo __('Setup link extension', 'rewrite-link-manager') ?></h2>
-<h3><?php _e('Link extension', 'rewrite-link-manager')?></h3>
+<h2><?php echo __('Setup tail extension', 'rewrite-link-manager') ?></h2>
+<h3><?php _e('Tail extension', 'rewrite-link-manager')?></h3>
 <form name="icl_save_extension_link" id="icl_save_extension_link" action="" method="post">
     <?php
     $extension_links = [];
@@ -113,7 +113,7 @@ if( !empty( $ts_settings['posttype_remove'] )) {
                       <?php if( $enable_link_extension ):?>checked="checked"<?php endif;?>/><?php _e( 'Enable', 'rewrite-link-manager');?></label>
     </p>
         <p>
-            <label><?php _e( 'Link extension', 'rewrite-link-manager');?></label>
+            <label><?php _e( 'Tail extension', 'rewrite-link-manager');?></label>
             <input type="text" name="link_dot" value="<?php echo $link_dot;?>"> <?php _e( '(Not start with dot, ex: html, htm)', 'rewrite-link-manager');?>
         </p>
         <p>
@@ -137,11 +137,11 @@ if( !empty( $ts_settings['posttype_remove'] )) {
             <?php }?>
         </ul>
         <p>
-            <a class="button" name="ts_save_link_extension" id="ts_save_link_extension" href="#"><?php echo __('Save link extension','rewrite-link-manager') ?></a>
+            <a class="button" name="ts_save_link_extension" id="ts_save_link_extension" href="#"><?php echo __('Save tail extension','rewrite-link-manager') ?></a>
             <span class="icl_ajx_response" id="icl_ajx_response_lx"></span>
         </p>
 </form>
 <p>
-    <img id="alp_ajx_ldr_lx" src="<?php echo REWRITE_LINK_MANAGER_PATH ?>/res/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
+    <img id="alp_ajx_ldr_lx" src="<?php echo REWRITE_LINK_MANAGER_PATH ?>/assets/img/ajax-loader.gif" width="16" height="16" style="display:none" alt="loading" />
 </p>
 </div>

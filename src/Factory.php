@@ -590,7 +590,7 @@ class Factory {
 
     function menuContent()
     {
-        include REWRITE_LINK_MANAGER_BASE . '/menu/management.php';
+        include REWRITE_LINK_MANAGER_BASE . '/view/management.php';
 
     }
 
