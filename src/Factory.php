@@ -304,7 +304,7 @@ class Factory {
         $st_settings = get_option( 'ts_settings' );
         if ( $st_settings ) {
             $taxonomies = $st_settings['taxonomy_remove'];
-            $taxonomies = array_values( $taxonomies );
+            !empty( $taxonomies ) && $taxonomies = array_values( $taxonomies );
         }
         if ( count( $taxonomies ) && in_array( $taxonomy, $taxonomies) ) {
             return true;
@@ -643,6 +643,9 @@ class Factory {
         if ( $data = $this->checkLinkValid( $save ) )
         {
             global $wp_rewrite;
+            $manager = Manager::getInstance();
+            $manager->resetRewrite();
+            $manager->saveDatabase();
             $dot = '.' . ltrim(  $data->dot_link, '.' );
             $wp_rewrite->page_structure = str_replace( $dot ,"", $wp_rewrite->page_structure );
             $wp_rewrite->flush_rules();
@@ -680,7 +683,9 @@ class Factory {
 
     function pluginActivate()
     {
-        
+        $manager = Manager::getInstance();
+        $manager->resetRewrite();
+        $manager->saveDatabase();
     }
 
     function pluginDeactivate()
