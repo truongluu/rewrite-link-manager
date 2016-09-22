@@ -10,7 +10,7 @@ namespace  RewriteLinkManager;
 use RewriteLinkManager\Rewrite\Manager;
 
 class Factory {
-    
+
     protected static  $_instance = null;
     protected $settings;
     private  $data_return;
@@ -134,7 +134,7 @@ class Factory {
 
             // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
             if ( ! empty( $query->query_vars['name'] ) ) {
-                if( $this->settings['enable_link_extension'] ) {
+                if( $this->settings['enable_link_extension'] && !empty( $this->settings['link_dot'] ) ) {
                     $dot = ltrim( $this->settings['link_dot'], '.' );
                     $query->query_vars['name'] = preg_replace( '/\.' . $dot . '/', '', $query->query_vars['name'] );
                 }
@@ -150,21 +150,25 @@ class Factory {
             $requests = explode( '/', $wp->request );
             $request_amount = count( $requests );
             $post_name = array_shift( $requests );
-            // if an attachment has been queried under this or another post type, skip checking
+            // If an attachment has been queried under this or another post type, skip checking
             if ( $request_amount > 1 && !in_array( $requests['0'], array('feed', 'page') ) )
                 return;
-            $post_name = rtrim( $post_name, '.html' );
-            global $wpdb;
-            $post = $wpdb->get_row( $wpdb->prepare(
-                "SELECT * FROM $wpdb->posts WHERE post_type=%s AND post_name =%s",
-                'attachment',
-                $post_name
-            ));
-            if ( $post && isset($post->ID) ) {
-                $wp->set_query_var( 'name', $post->post_name );
-                $wp->set_query_var( 'pagename', false );
-                return;
+            // If link extension enable
+            if( $this->settings['enable_link_extension'] && !empty( $this->settings['link_dot'] ) ) {
+                $post_name = rtrim( $post_name, '.' . $this->settings['link_dot'] );
+                global $wpdb;
+                $post = $wpdb->get_row( $wpdb->prepare(
+                    "SELECT * FROM $wpdb->posts WHERE post_type=%s AND post_name =%s",
+                    'attachment',
+                    $post_name
+                ));
+                if ( $post && isset($post->ID) ) {
+                    $wp->set_query_var( 'name', $post->post_name );
+                    $wp->set_query_var( 'pagename', false );
+                    return;
+                }
             }
+
         }
     }
 
@@ -180,7 +184,6 @@ class Factory {
                 $postype_removes = $this->settings['posttype_remove'];
             }
         }
-
         if ( count( $postype_removes ) ) {
             if ( 'publish' != $post->post_status ) {
                 return $post_link;
@@ -189,9 +192,13 @@ class Factory {
             and $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
 
             // Check dot link and replace
-            if ( $this->settings['enable_link_extension'] ) {
+            if ( $this->settings['enable_link_extension'] && !empty( $this->settings['link_dot'] ) ) {
                 $dot = ltrim( $this->settings['link_dot'], '.' );
-                $post_link = rtrim( $post_link, '/' ) . '.' . $dot;
+                $link_extension = $this->settings['link_extension'];
+                $link_extension
+                and in_array( $post->post_type, $link_extension )
+                and $post_link = rtrim( $post_link, '/' ) . '.' . $dot;
+
             }
 
 
@@ -249,7 +256,7 @@ class Factory {
             $old_slug = $term->slug;
             $new_slug = sanitize_title( $_POST['slug'] );
             if( empty( $_POST['slug'] ) ) {
-               $new_slug = sanitize_title( $_POST['name'] );
+                $new_slug = sanitize_title( $_POST['name'] );
             }
 
             $prevent_duplicate = 0;
@@ -304,7 +311,7 @@ class Factory {
         $st_settings = get_option( 'ts_settings' );
         if ( $st_settings ) {
             $taxonomies = $st_settings['taxonomy_remove'];
-            !empty( $taxonomies ) && $taxonomies = array_values( $taxonomies );
+            $taxonomies && $taxonomies = array_values( $taxonomies );
         }
         if ( count( $taxonomies ) && in_array( $taxonomy, $taxonomies) ) {
             return true;
@@ -463,8 +470,8 @@ class Factory {
                     responselx = jQuery( '#icl_ajx_response_lx'),
                     loading1 = jQuery( '#alp_ajx_ldr_1'),
                     loading2 = jQuery( '#alp_ajx_ldr_2');
-                    loadingpt = jQuery( '#alp_ajx_ldr_pt');
-                    loadinglx = jQuery( '#alp_ajx_ldr_lx');
+                loadingpt = jQuery( '#alp_ajx_ldr_pt');
+                loadinglx = jQuery( '#alp_ajx_ldr_lx');
                 jQuery( document).on( 'click', '#ts_save_taxonomy', function( event ) {
                     event.preventDefault();
                     response1.text( '' );
@@ -564,7 +571,7 @@ class Factory {
             });
 
         </script>
-    <?php
+        <?php
     }
 
     function adminEnqueueScripts()
